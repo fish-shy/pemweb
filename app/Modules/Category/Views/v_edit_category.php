@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Category</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Category</h1>
+
+        <form action="<?= base_url('category/update/' . $id) ?>" method="post">
+            <?= csrf_field() ?>
+            
+            <div class="form-group">
+                <label for="nama">Nama Kategori</label>
+                <input type="text" class="form-control <?= (session('errors.nama')) ? 'is-invalid' : '' ?>" 
+                       id="nama" name="nama" value="<?= old('nama', $getData->nama) ?>">
+                <div class="invalid-feedback">
+                    <?= session('errors.nama') ?>
+                </div>
+            </div>
+            
+            <div class="mt-3">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="<?= base_url('category') ?>" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
