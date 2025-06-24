@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Management</title>
 </head>
+
 <body>
     <div class="container mt-4">
         <h2>Product List</h2>
-        <div class="mb-3">
-            <a href="<?= base_url('product/add-product') ?>" class="btn btn-primary">Add Product</a>
-        </div>
+        <?php if (session()->get('role') === 'admin') : ?>
+
+            <div class="mb-3">
+                <a href="<?= base_url('product/add-product') ?>" class="btn btn-primary">Add Product</a>
+            </div>
+        <?php endif; ?>
         <div class="table-responsive">
             <table class="table table-bordered table-striped" id="productTable">
                 <thead class="thead-dark">
@@ -20,7 +25,9 @@
                         <th>deskripsi</th>
                         <th>Harga</th>
                         <th>Created At</th>
-                        <th>Actions</th>
+                        <?php if (session()->get('role') === 'admin') : ?>
+                            <th>Actions</th>
+                        <?php endif; ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,16 +40,18 @@
                                 <td><?= $row->deskripsi ?></td>
                                 <td><?= number_format($row->harga, 2) ?></td>
                                 <td><?= date('d-m-Y H:i:s', strtotime($row->created_at)) ?></td>
-                                <td>
-                                    <div class="d-flex justify-content-start gap-2">
-                                        <a href="<?= site_url('product/edit/' . $row->id) ?>" class="btn btn-outline-info">
-                                            Edit
-                                        </a>
-                                        <a href="<?= site_url('product/delete/' . $row->id) ?>" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this product?');">
-                                            Delete
-                                        </a>
-                                    </div>
-                                </td>
+                                <?php if (session()->get('role') === 'admin') : ?>
+                                    <td>
+                                        <div class="d-flex justify-content-start gap-2">
+                                            <a href="<?= site_url('product/edit/' . $row->id) ?>" class="btn btn-outline-info">
+                                                Edit
+                                            </a>
+                                            <a href="<?= site_url('product/delete/' . $row->id) ?>" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this product?');">
+                                                Delete
+                                            </a>
+                                        </div>
+                                    </td>
+                                <?php endif; ?>
                             </tr>
                         <?php } ?>
                     <?php } else { ?>
@@ -55,4 +64,5 @@
         </div>
     </div>
 </body>
+
 </html>

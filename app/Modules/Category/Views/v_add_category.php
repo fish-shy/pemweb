@@ -20,7 +20,16 @@
                     <?= session('errors.nama') ?>
                 </div>
             </div>
-            
+                        
+            <div class="form-group">
+                <label for="deskripsi">Deskripsi</label>
+                <input type="text" class="form-control <?= (session('errors.deskripsi')) ? 'is-invalid' : '' ?>" 
+                       id="deskripsi" name="deskripsi" value="<?= old('deskripsi') ?>">
+                <div class="invalid-feedback">
+                    <?= session('errors.deskripsi') ?>
+                </div>
+            </div>
+
             <div class="mt-3">
                 <button type="submit" class="btn btn-primary">Save</button>
                 <a href="<?= base_url('category') ?>" class="btn btn-secondary">Cancel</a>

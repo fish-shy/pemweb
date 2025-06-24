@@ -14,8 +14,16 @@ class Auth extends BaseController
         $this->userModel = new UserModel();
     }
 
+    private function checkLoggedIn() {
+        if(session()->get('logged_in')) {
+            return redirect()->to(base_url('/'));
+        }
+        return true;
+    }
+
     public function login()
     {
+        if($this->checkLoggedIn() !== true) return $this->checkLoggedIn();
         $data = [
             'title' => 'Login',
             'validation' => \Config\Services::validation(),
@@ -25,6 +33,8 @@ class Auth extends BaseController
 
     public function processLogin()
     {
+        
+        if($this->checkLoggedIn() !== true) return $this->checkLoggedIn();
         $rules = [
             'email' => 'required|valid_email',
             'password' => 'required'
@@ -55,6 +65,8 @@ class Auth extends BaseController
 
     public function register()
     {
+        
+        if($this->checkLoggedIn() !== true) return $this->checkLoggedIn();
         $data = [
             'title' => 'Register',
             'validation' => \Config\Services::validation(),
@@ -64,10 +76,12 @@ class Auth extends BaseController
 
     public function processRegister()
     {
+        
+        if($this->checkLoggedIn() !== true) return $this->checkLoggedIn();
         $rules = [
             'nama' => 'required|min_length[3]',
             'email' => 'required|valid_email|is_unique[users.email]',
-            'password' => 'required|min_length[6]',
+            'password' => 'required|min_length[3]',
             'confirm_password' => 'required|matches[password]'
         ];
 

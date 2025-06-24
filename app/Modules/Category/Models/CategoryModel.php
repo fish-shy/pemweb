@@ -34,6 +34,8 @@ class CategoryModel extends Model
 
     public function deleteData($id)
     {
+        $productModel = new \App\Modules\Product\Models\ProductModel();
+        $productModel->where('category_id', $id)->delete();
         return $this->delete($id);
     }
 }
