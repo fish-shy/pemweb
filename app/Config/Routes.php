@@ -17,6 +17,7 @@ $routes->group('user', ['namespace' => 'App\Modules\User\Controllers'], function
     $routes->get('edit/(:num)', 'User::edit/$1');
     $routes->post('update/(:num)', 'User::update/$1');
     $routes->get('delete/(:num)', 'User::delete/$1');
+    $routes->get('profile/(:num)', 'User::profile/$1');
 });
 
 $routes->group('product', ['namespace' => 'App\Modules\Product\Controllers'], function ($routes) {

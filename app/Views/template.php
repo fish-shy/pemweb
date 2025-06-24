@@ -24,7 +24,7 @@
           </button>
         </div>
         <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item nav-profile dropdown">
+          <li class="nav-item nav-profile dropdown" onclick="location.href='<?php echo site_url('user/profile/' . session()->get('id')) ?>'">
             <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
               <div class="nav-profile-img">
                 <img src="<?php echo base_url('assets/images/face25.jpg') ?>" alt="profile">
@@ -117,7 +117,7 @@
     <div class="container-fluid page-body-wrapper">
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-          <li class="nav-item nav-profile">
+          <li class="nav-item nav-profile" onclick="location.href='<?php echo site_url('user/profile/' . session()->get('id')) ?>'">
             <a href="#" class="nav-link">
               <div class="nav-profile-image">
                 <img src="<?php echo base_url('assets/images/face25.jpg') ?>" alt="profile" />
@@ -172,9 +172,5 @@
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="<?php echo base_url('assets/js/jquery-3.6.0.min.js') ?>"></script>
-  <script src="<?php echo base_url('assets/js/bootstrap.bundle.min.js') ?>"></script>
-  <script src="<?php echo base_url('assets/js/script.js') ?>"></script>
 </body>
 </html>

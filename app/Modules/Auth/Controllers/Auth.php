@@ -76,7 +76,6 @@ class Auth extends BaseController
 
     public function processRegister()
     {
-        
         if($this->checkLoggedIn() !== true) return $this->checkLoggedIn();
         $rules = [
             'nama' => 'required|min_length[3]',
@@ -98,7 +97,7 @@ class Auth extends BaseController
         $data = [
             'nama' => $this->request->getPost('nama'),
             'email' => $email,
-            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+            'password' => $this->request->getPost('password'),
             'role' => 'user'
         ];
 
