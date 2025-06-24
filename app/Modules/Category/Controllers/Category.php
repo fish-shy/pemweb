@@ -50,7 +50,7 @@ class Category extends BaseController {
         $this->categoryModel->updateData($id, $data);
         return redirect()->to(base_url('category'));
     }
-
+    
     public function delete($id) {
         $this->categoryModel->deleteData($id);
         return redirect()->to(base_url('category'));

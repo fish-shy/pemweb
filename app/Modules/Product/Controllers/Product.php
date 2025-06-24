@@ -58,7 +58,8 @@ class Product extends BaseController
             'title' => 'Edit Product',
             'content' => 'App\Modules\Product\Views\v_edit_product',
             'getData' => $this->productModel->getProductById($id),
-            'id' => $id
+            'id' => $id,
+            'categories' => $this->categoryModel->findAll()
         ];
         return view('App\Views\template', $data);
     }

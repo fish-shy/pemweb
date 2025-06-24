@@ -39,17 +39,18 @@
                 </div>
             </div>
             
-            <div class="form-group">
-                <label for="category">Kategori</label>
-                <select class="form-control <?= (session('errors.category')) ? 'is-invalid' : '' ?>" 
-                        id="category" name="category">
-                    <option value="">Pilih Kategori</option>
+                  <div class="form-group">
+                <label for="category">Category</label>
+                <select class="form-control <?= (session('errors.category_id')) ? 'is-invalid' : '' ?>" 
+                        id="category" name="category_id">
+                    <option value="">Select Category</option>
+                    <option value="0">None</option>
                     <?php foreach ($categories as $category): ?>
-                        <option value="<?= $category->id ?>" <?= (old('category', $getData->category_id) == $category->id) ? 'selected' : '' ?>><?= $category->name ?></option>
+                        <option value="<?= $category->id ?>" <?= (old('category_id', $getData->category_id) == $category->id) ? 'selected' : '' ?>><?= $category->nama ?></option>
                     <?php endforeach; ?>
                 </select>
                 <div class="invalid-feedback">
-                    <?= session('errors.category') ?>
+                    <?= session('errors.category_id') ?>
                 </div>
             </div>
             

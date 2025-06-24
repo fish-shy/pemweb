@@ -44,8 +44,9 @@
                 <select class="form-control <?= (session('errors.category')) ? 'is-invalid' : '' ?>" 
                         id="category" name="category_id">
                     <option value="">Select Category</option>
+                    <option value="0">None</option>
                     <?php foreach ($categories as $category): ?>
-                        <option value="<?= $category->id ?>" <?= (old('category') == $category->id) ? 'selected' : '' ?>><?= $category->nama ?></option>
+                        <option value="<?= $category->id ?>" <?= (old('category_id') == $category->id) ? 'selected' : '' ?>><?= $category->nama ?></option>
                     <?php endforeach; ?>
                 </select>
                 <div class="invalid-feedback">

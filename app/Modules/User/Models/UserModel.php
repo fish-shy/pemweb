@@ -38,14 +38,27 @@ class UserModel extends Model
     {
         return $this->select('nama, email, role,password')->find($id);
     }
-
     public function updateData($id, $data)
     {
         return $this->update($id, $data);
     }
-
     public function deleteData($id)
     {
         return $this->delete($id);
+    }
+
+    public function isEmailExists($email)
+    {
+        return $this->where('email', $email)->countAllResults() > 0;
+    }
+    public function authenticate($email, $password)
+    {
+        $user = $this->where('email', $email)->first();
+
+        if (!$user || !password_verify($password, $user->password)) {
+            return false;
+        }
+
+        return $user;
     }
 }

@@ -25,7 +25,6 @@
             </div>
           </form>
         </div>
-
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,7 +33,7 @@
                 <span class="availability-status online"></span>
               </div>
               <div class="nav-profile-text">
-                <p class="mb-1 text-black">David Greymaax</p>
+                <p class="mb-1 text-black"><?= session()->get('nama') ?></p>
               </div>
             </a>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
@@ -167,35 +166,37 @@
                 <!--change to offline or busy as needed-->
               </div>
               <div class="nav-profile-text d-flex flex-column">
-                <span class="font-weight-bold mb-2">David Grey. H</span>
-                <span class="text-secondary text-small">Project Manager</span>
+                <span class="font-weight-bold mb-2"><?= session()->get("nama") ?></span>
+                <span class="text-secondary text-small"><?= session()->get("role") ?></span>
               </div>
               <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('dashboard') ?>">
+            <a class="nav-link" href="<?php echo site_url('/') ?>">
               <span class="menu-title">Dashboard</span>
               <i class="mdi mdi-home menu-icon"></i>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('user') ?>">
+              <span class="menu-title">User</span>
+              <i class="mdi mdi-home menu-icon"></i>
+            </a>
 
-          <li>
-            <a href="<?php echo site_url('mahasiswa') ?>" class="nav-link">
-              <p>View Mahasiswa</p>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('category') ?>">
+              <span class="menu-title">Category</span>
+              <i class="mdi mdi-home menu-icon"></i>
             </a>
           </li>
-          <li>
-            <a href="<?php echo site_url('mahasiswa/show') ?>" class="nav-link">
-              <p>Show Mahasiswa</p>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('product') ?>">
+              <span class="menu-title">Product</span>
+              <i class="mdi mdi-home menu-icon"></i>
             </a>
           </li>
-          <li>
-            <a href="<?php echo site_url('mahasiswa/add') ?>" class="nav-link">
-              <p>Add Mahasiswa</p>
-            </a>
-          </li>
-
         </ul>
       </nav>
       <!-- partial -->
@@ -218,19 +219,4 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
-  <!-- container-scroller -->
-  <!-- plugins:js -->
-  <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page -->
-  <!-- End plugin js for this page -->
-  <!-- inject:js -->
-  <script src="../../assets/js/off-canvas.js"></script>
-  <script src="../../assets/js/misc.js"></script>
-  <script src="../../assets/js/settings.js"></script>
-  <script src="../../assets/js/todolist.js"></script>
-  <script src="../../assets/js/jquery.cookie.js"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page -->
-  <!-- End custom js for this page -->
 </body>
